@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email Confirmed</title>
+<style>
+  :root {
+    --bg: #F6F1E4;
+    --text: #1F2A26;
+    --muted: #5A6661;
+    --accent: #183C35;
+    --rule: #DCD3BE;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12251F;
+      --text: #EDE6D3;
+      --muted: #A9B3AD;
+      --accent: #D9CFA9;
+      --rule: #2B4139;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 48px 16px 80px; }
+  h1 { color: var(--accent); font-size: 2rem; line-height: 1.2; margin: 0 0 4px; }
+  .lede { color: var(--muted); margin: 0 0 32px; }
+  h2 { color: var(--accent); font-size: 1.2rem; margin: 40px 0 8px; padding-top: 24px; border-top: 1px solid var(--rule); }
+  h3 { font-size: 1rem; margin: 20px 0 4px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>You're all set</h1>
+  <p class="lede">Your email is confirmed. Head back to the Nestory app to continue.</p>
+  <p>If the app is asking for a code, check your inbox for the newest email from Nestory and enter the 6-digit code shown there.</p>
+  <p>Need help? Visit <a href="support.html">Nestory Support</a>.</p>
+</main>
+</body>
+</html>
