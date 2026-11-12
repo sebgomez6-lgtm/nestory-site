@@ -3,11 +3,364 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh" content="0; url=https://apps.apple.com/app/id6826665963">
-<title>Nestory: Home Inventory</title>
+<title>Nestory: Home Inventory for iPhone</title>
+<meta name="description" content="Nestory keeps every appliance, warranty, manual and repair for your home in one place, and reminds you before warranties run out. Free on iPhone.">
+<meta name="apple-itunes-app" content="app-id=6826665963">
+<meta property="og:title" content="Nestory: Home Inventory">
+<meta property="og:description" content="Every warranty, manual and repair for your home, in one app. Free on iPhone.">
+<meta property="og:image" content="https://trynestory.com/img/og.jpg">
+<meta property="og:url" content="https://trynestory.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1c4b3a; --green-2: #245c47; --green-3: #143729; --night: #0d2a20;
+    --cream: #f5efe0; --cream-2: #ece4d0; --gold: #e8b86a; --gold-ink: #a8742a;
+    --ink: #163e30; --muted: #5a6b62;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  /* header */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(28,75,58,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--cream); text-decoration: none; font-weight: 700; font-size: 1.3rem; letter-spacing: -0.02em; }
+  .brand img { width: 34px; height: 34px; border-radius: 9px; }
+  nav { display: flex; align-items: center; gap: 26px; }
+  nav a.link { color: rgba(245,239,224,0.8); text-decoration: none; font-weight: 500; font-size: 0.98rem; }
+  nav a.link:hover { color: var(--cream); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--cream); color: var(--ink); text-decoration: none; font-weight: 700; border-radius: 999px; padding: 9px 18px; font-size: 0.95rem; transition: transform .15s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* hero */
+  .hero { background: radial-gradient(ellipse 90% 80% at 70% 20%, var(--green-2) 0%, var(--green) 50%, var(--green-3) 100%); color: var(--cream); overflow: hidden; position: relative; }
+  .hero::before { content: ""; position: absolute; width: 900px; height: 900px; right: -200px; top: -250px; border-radius: 50%; background: radial-gradient(circle, rgba(232,184,106,0.16) 0%, rgba(232,184,106,0) 62%); }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; padding-top: 72px; position: relative; }
+  .kicker { display: inline-block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(2.6rem, 5.6vw, 4.4rem); line-height: 1.02; letter-spacing: -0.035em; font-weight: 700; text-wrap: balance; }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero p.lede { margin-top: 22px; font-size: 1.22rem; color: rgba(245,239,224,0.82); max-width: 520px; }
+  .cta-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 32px; }
+  .badge { display: inline-flex; align-items: center; gap: 10px; height: 58px; padding: 0 22px 0 16px; background: #000; color: #fff; border: 1.5px solid rgba(255,255,255,0.35); border-radius: 13px; text-decoration: none; transition: transform .15s; }
+  .badge:hover { transform: translateY(-2px); }
+  .badge svg { width: 30px; height: 30px; }
+  .badge span { display: flex; flex-direction: column; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; font-size: 1.55rem; font-weight: 600; line-height: 1; letter-spacing: -0.02em; }
+  .badge small { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.01em; margin-bottom: 3px; }
+  .facts { color: rgba(245,239,224,0.65); font-size: 0.95rem; font-weight: 500; }
+  .hero-phones { position: relative; height: 600px; align-self: end; }
+  .phone { position: absolute; width: 270px; aspect-ratio: 924 / 2000; background: var(--night); border-radius: 44px; padding: 9px; box-shadow: 0 30px 70px rgba(0,0,0,0.45), inset 0 0 0 1.5px rgba(245,239,224,0.14); }
+  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 36px; }
+  .hero-phones .p1 { left: 50%; margin-left: -150px; top: 20px; z-index: 2; }
+  .hero-phones .p2 { left: 50%; margin-left: 20px; top: 90px; transform: rotate(7deg); opacity: 0.9; }
+  .hero-phones .p3 { left: 50%; margin-left: -310px; top: 110px; transform: rotate(-7deg); opacity: 0.9; }
+
+  /* trust strip */
+  .strip { background: var(--green-3); color: rgba(245,239,224,0.8); }
+  .strip .wrap { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 18px 20px; font-weight: 600; font-size: 0.98rem; }
+  .strip span::before { content: "✓"; color: var(--gold); margin-right: 8px; }
+
+  /* sections */
+  section { padding: 96px 0; }
+  .eyebrow { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-ink); }
+  h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.06; letter-spacing: -0.03em; margin-top: 10px; text-wrap: balance; }
+  .center { text-align: center; }
+  .center p.sub { max-width: 620px; margin: 16px auto 0; color: var(--muted); font-size: 1.15rem; }
+
+  /* how it works */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; }
+  .step { background: #fffdf8; border: 1px solid var(--cream-2); border-radius: 26px; padding: 30px 26px; }
+  .step .n { width: 46px; height: 46px; border-radius: 50%; background: var(--green); color: var(--cream); display: grid; place-items: center; font-weight: 700; font-size: 1.2rem; }
+  .step h3 { margin-top: 18px; font-size: 1.3rem; letter-spacing: -0.02em; }
+  .step p { margin-top: 8px; color: var(--muted); }
+
+  /* features */
+  .features { background: #fbf7ee; }
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 56px 0; }
+  .feature + .feature { border-top: 1px solid var(--cream-2); }
+  .feature.flip .shot { order: 2; }
+  .feature .shot { display: flex; justify-content: center; }
+  .feature .shot .phone { position: relative; width: 280px; }
+  .feature .shot .bg { position: relative; padding: 36px 70px; border-radius: 36px; background: radial-gradient(ellipse at 50% 30%, var(--green-2), var(--green) 60%, var(--green-3)); }
+  .feature h3 { font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.1; letter-spacing: -0.03em; margin-top: 10px; text-wrap: balance; }
+  .feature p { margin-top: 14px; font-size: 1.12rem; color: var(--muted); max-width: 460px; }
+  .feature ul { list-style: none; margin-top: 18px; display: grid; gap: 10px; }
+  .feature li { display: flex; gap: 10px; font-weight: 500; }
+  .feature li::before { content: "✓"; color: var(--gold-ink); font-weight: 700; }
+
+  /* gallery */
+  .gallery { background: var(--green); color: var(--cream); overflow: hidden; }
+  .gallery h2 { color: var(--cream); }
+  .gallery .sub { color: rgba(245,239,224,0.75) !important; }
+  .rail { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 48px 20px 12px; margin-top: 8px; scrollbar-width: none; }
+  .rail::-webkit-scrollbar { display: none; }
+  .rail figure { flex: none; width: 240px; scroll-snap-align: center; }
+  .rail .phone { position: relative; width: 240px; border-radius: 40px; padding: 8px; }
+  .rail .phone img { border-radius: 32px; }
+  .rail figcaption { margin-top: 14px; text-align: center; font-weight: 600; color: rgba(245,239,224,0.85); }
+  @media (min-width: 1600px) { .rail { justify-content: center; } }
+
+  /* who */
+  .who { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 48px; }
+  .who > div { background: #fffdf8; border: 1px solid var(--cream-2); border-radius: 22px; padding: 24px; }
+  .who b { display: block; font-size: 1.12rem; }
+  .who span { display: block; margin-top: 6px; color: var(--muted); }
+  .who .ico { font-size: 1.6rem; margin-bottom: 10px; }
+
+  /* faq */
+  .faq { max-width: 760px; margin: 44px auto 0; }
+  details { border-bottom: 1px solid var(--cream-2); padding: 20px 4px; }
+  summary { cursor: pointer; font-weight: 600; font-size: 1.15rem; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--gold-ink); font-size: 1.5rem; line-height: 1; }
+  details[open] summary::after { content: "–"; }
+  details p { margin-top: 10px; color: var(--muted); font-size: 1.05rem; }
+
+  /* final cta */
+  .final { background: radial-gradient(ellipse 80% 120% at 50% 0%, var(--green-2), var(--green) 55%, var(--green-3)); color: var(--cream); text-align: center; }
+  .final img.icon { width: 88px; height: 88px; border-radius: 22px; margin: 0 auto; box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
+  .final h2 { color: var(--cream); margin-top: 24px; }
+  .final p { margin: 14px auto 0; max-width: 520px; color: rgba(245,239,224,0.8); font-size: 1.15rem; }
+  .final .cta-row { justify-content: center; }
+
+  footer { background: var(--green-3); color: rgba(245,239,224,0.7); font-size: 0.95rem; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; padding: 28px 20px; }
+  footer nav { gap: 20px; flex-wrap: wrap; }
+  footer a { color: rgba(245,239,224,0.8); text-decoration: none; }
+  footer a:hover { color: var(--cream); }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  /* tablet / phone */
+  @media (max-width: 900px) {
+    nav a.link { display: none; }
+    .hero .wrap { grid-template-columns: 1fr; text-align: center; padding-top: 48px; }
+    .hero p.lede { margin-left: auto; margin-right: auto; }
+    .cta-row { justify-content: center; }
+    .hero-phones { height: 440px; }
+    .hero-phones .phone { width: 210px; border-radius: 36px; padding: 7px; }
+    .hero-phones .phone img { border-radius: 29px; }
+    .hero-phones .p1 { margin-left: -105px; }
+    .hero-phones .p2 { margin-left: 30px; top: 70px; }
+    .hero-phones .p3 { margin-left: -240px; top: 80px; }
+    section { padding: 72px 0; }
+    .steps { grid-template-columns: 1fr; }
+    .feature { grid-template-columns: 1fr; gap: 32px; text-align: center; padding: 44px 0; }
+    .feature.flip .shot { order: 0; }
+    .feature p { margin-left: auto; margin-right: auto; }
+    .feature ul { justify-content: center; }
+    .feature .shot .bg { padding: 28px 40px; }
+    .feature .shot .phone { width: 230px; }
+    .who { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .who { grid-template-columns: 1fr; }
+    .hero-phones .p3 { display: none; }
+    .hero-phones .p2 { margin-left: 0; }
+    .hero-phones .p1 { margin-left: -150px; }
+    .strip .wrap { gap: 10px 24px; }
+  }
+</style>
 </head>
-<body style="font-family:-apple-system,sans-serif;background:#1c4b3a;color:#f5efe0;text-align:center;padding:60px 20px">
-<p>Taking you to Nestory on the App Store…</p>
-<p><a style="color:#e8b86a" href="https://apps.apple.com/app/id6826665963">Open the App Store</a> · <a style="color:#e8b86a" href="support.html">Support</a> · <a style="color:#e8b86a" href="privacy.html">Privacy</a></p>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/icon.png" alt="">Nestory</a>
+    <nav>
+      <a class="link" href="#how">How it works</a>
+      <a class="link" href="#features">Features</a>
+      <a class="link" href="#faq">FAQ</a>
+      <a class="btn" href="https://apps.apple.com/app/id6826665963"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.78.74 2.99.72 1.24-.02 2.02-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.28z"/></svg>Download</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Home inventory for iPhone</span>
+      <h1>Your home's records, <em>finally in one place.</em></h1>
+      <p class="lede">Every appliance, warranty, manual and repair, saved on your phone. Nestory reminds you before warranties run out, so you never pay for a fix that should have been free.</p>
+      <div class="cta-row">
+        <a class="badge" href="https://apps.apple.com/app/id6826665963" aria-label="Download Nestory on the App Store"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.78.74 2.99.72 1.24-.02 2.02-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.28z"/></svg><span><small>Download on the</small>App Store</span></a>
+        <span class="facts">Free · No ads · No tracking</span>
+      </div>
+    </div>
+    <div class="hero-phones" aria-hidden="true">
+      <div class="phone p3"><img src="img/4-manual.jpg" alt=""></div>
+      <div class="phone p2"><img src="img/3-warranty.jpg" alt=""></div>
+      <div class="phone p1"><img src="img/1-dashboard.jpg" alt=""></div>
+    </div>
+  </div>
+</div>
+
+<div class="strip"><div class="wrap">
+  <span>Free to download</span><span>Your data stays private</span><span>Export a PDF anytime</span><span>Delete your account in the app</span>
+</div></div>
+
+<section id="how">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">How it works</div>
+      <h2>Set it up in one walk through your home</h2>
+      <p class="sub">No spreadsheets, no binders. Just your phone and a few minutes.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><h3>Snap it</h3><p>Take a photo of each appliance, pick what it is, and it's saved. Add the brand, model and serial number whenever you like.</p></div>
+      <div class="step reveal"><div class="n">2</div><h3>Add the details</h3><p>Warranty end dates, manuals and repairs. Search for a manual online, add a PDF, or scan the paper copy.</p></div>
+      <div class="step reveal"><div class="n">3</div><h3>Get reminded</h3><p>Nestory nudges you before a warranty expires and when filters, servicing and seasonal upkeep are due.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">Features</div>
+      <h2>Everything your home came with, organized</h2>
+    </div>
+
+    <div class="feature reveal">
+      <div class="shot"><div class="bg"><div class="phone"><img src="img/1-dashboard.jpg" alt="Home health score on the Nestory home screen" loading="lazy"></div></div></div>
+      <div>
+        <div class="eyebrow">Home health score</div>
+        <h3>Know your home's health at a glance</h3>
+        <p>One score for how well your home is documented. It goes up as you add items, warranties and reminders, and shows you what needs attention.</p>
+        <ul><li>See what's missing in one tap</li><li>Appliances and home systems side by side</li></ul>
+      </div>
+    </div>
+
+    <div class="feature flip reveal">
+      <div class="shot"><div class="bg"><div class="phone"><img src="img/3-warranty.jpg" alt="A fridge's warranty in Nestory with 2 years left" loading="lazy"></div></div></div>
+      <div>
+        <div class="eyebrow">Warranties</div>
+        <h3>Never lose track of a warranty again</h3>
+        <p>Add a warranty's end date to any appliance and choose when to be reminded. See what's covered, and for how long, on one screen.</p>
+        <ul><li>Reminders from 1 week to 3 months before</li><li>Brand, model and serial number saved</li></ul>
+      </div>
+    </div>
+
+    <div class="feature reveal">
+      <div class="shot"><div class="bg"><div class="phone"><img src="img/4-manual.jpg" alt="Adding a manual in Nestory" loading="lazy"></div></div></div>
+      <div>
+        <div class="eyebrow">Manuals</div>
+        <h3>Every manual in your pocket</h3>
+        <p>Search online for your model's manual, add a PDF you've saved, or photograph the paper copy page by page. It stays with the appliance it belongs to.</p>
+        <ul><li>Retire the drawer full of paper</li><li>Find any manual in seconds</li></ul>
+      </div>
+    </div>
+
+    <div class="feature flip reveal">
+      <div class="shot"><div class="bg"><div class="phone"><img src="img/5-systems.jpg" alt="Home systems and repair history in Nestory" loading="lazy"></div></div></div>
+      <div>
+        <div class="eyebrow">Home systems</div>
+        <h3>Roof, HVAC, plumbing and more</h3>
+        <p>Track the big things too, and log every repair and service visit, so you always know when something was last looked at and who did it.</p>
+        <ul><li>Full repair and maintenance history</li><li>Separate inventories for more than one home</li></ul>
+      </div>
+    </div>
+
+    <div class="feature reveal">
+      <div class="shot"><div class="bg"><div class="phone"><img src="img/6-export.jpg" alt="Nestory's PDF home report" loading="lazy"></div></div></div>
+      <div>
+        <div class="eyebrow">Home report</div>
+        <h3>Your whole home in one PDF</h3>
+        <p>Export every item, warranty, reminder and repair in one tap. Handy for insurance claims, selling your home, or handing over to the next owner.</p>
+        <ul><li>One tap to share</li><li>A record of what you own, before anything happens</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="center reveal wrap">
+    <div class="eyebrow" style="color: var(--gold)">Take a look</div>
+    <h2>Simple, calm and made for real homes</h2>
+    <p class="sub">Swipe through the app.</p>
+  </div>
+  <div class="rail">
+    <figure><div class="phone"><img src="img/1-dashboard.jpg" alt="" loading="lazy"></div><figcaption>Your home's health</figcaption></figure>
+    <figure><div class="phone"><img src="img/2-identify.jpg" alt="" loading="lazy"></div><figcaption>Snap it, name it, done</figcaption></figure>
+    <figure><div class="phone"><img src="img/3-warranty.jpg" alt="" loading="lazy"></div><figcaption>Warranties and reminders</figcaption></figure>
+    <figure><div class="phone"><img src="img/4-manual.jpg" alt="" loading="lazy"></div><figcaption>Every manual</figcaption></figure>
+    <figure><div class="phone"><img src="img/5-systems.jpg" alt="" loading="lazy"></div><figcaption>Home systems</figcaption></figure>
+    <figure><div class="phone"><img src="img/6-export.jpg" alt="" loading="lazy"></div><figcaption>One-tap report</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">Made for</div>
+      <h2>Anyone with a home to look after</h2>
+    </div>
+    <div class="who">
+      <div class="reveal"><div class="ico">🏡</div><b>Homeowners</b><span>Keep warranties, manuals and upkeep on track for years.</span></div>
+      <div class="reveal"><div class="ico">🔑</div><b>New home buyers</b><span>Start organized from day one in your new place.</span></div>
+      <div class="reveal"><div class="ico">📦</div><b>Renters</b><span>Keep track of what you own and how you found the place.</span></div>
+      <div class="reveal"><div class="ico">🤝</div><b>Sellers</b><span>Hand the next owner a full record of the home.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top: 24px">
+  <div class="wrap">
+    <div class="center reveal">
+      <div class="eyebrow">FAQ</div>
+      <h2>Questions, answered</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Is Nestory free?</summary><p>Yes. Nestory is free to download, with no ads.</p></details>
+      <details><summary>Is it available on Android?</summary><p>Not yet. Nestory is available for iPhone today.</p></details>
+      <details><summary>Is my information private?</summary><p>Yes. No ads, no tracking, and we never sell your data or ask for your address. You can delete your account and everything in it from inside the app. Read the <a href="privacy.html">privacy policy</a>.</p></details>
+      <details><summary>Can I keep track of more than one home?</summary><p>Yes. Keep separate inventories for your house, a rental or a vacation home, and switch between them in a tap.</p></details>
+      <details><summary>What if I don't have the manual anymore?</summary><p>Search for your model's manual online right from the app and save it, or add a PDF you've downloaded. If you still have the paper copy, scan it page by page.</p></details>
+      <details><summary>How do I get help?</summary><p>Visit the <a href="support.html">support page</a> or email <a href="mailto:hello.nestory.app@gmail.com">hello.nestory.app@gmail.com</a>.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap reveal">
+    <img class="icon" src="img/icon.png" alt="Nestory app icon">
+    <h2>Start your home's story today</h2>
+    <p>Free on iPhone. Set it up in one walk through your home.</p>
+    <div class="cta-row">
+      <a class="badge" href="https://apps.apple.com/app/id6826665963" aria-label="Download Nestory on the App Store"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.78.74 2.99.72 1.24-.02 2.02-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.28z"/></svg><span><small>Download on the</small>App Store</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Nestory</span>
+    <nav>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="https://www.instagram.com/trynestory">Instagram</a>
+      <a href="https://www.tiktok.com/@trynestory">TikTok</a>
+      <a href="mailto:hello.nestory.app@gmail.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+</script>
 </body>
 </html>
