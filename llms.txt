@@ -24,3 +24,10 @@
 - [Home](https://trynestory.com/)
 - [Support](https://trynestory.com/support.html)
 - [Privacy policy](https://trynestory.com/privacy.html)
+
+## Guides
+- [How long do appliances last?](https://trynestory.com/guides/how-long-do-appliances-last.html): Typical lifespans and signs it's time to replace.
+- [Home inventory for insurance](https://trynestory.com/guides/home-inventory-for-insurance.html): A step-by-step checklist before storm season.
+- [Where to find model and serial numbers](https://trynestory.com/guides/find-model-serial-number.html): On every major appliance.
+- [What's under warranty in your home](https://trynestory.com/guides/new-home-warranties.html): Builder, home and manufacturer warranties explained.
+- [Seasonal maintenance checklist](https://trynestory.com/guides/seasonal-home-maintenance-checklist.html): What to do each month and season.
