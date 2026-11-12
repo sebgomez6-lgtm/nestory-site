@@ -1,0 +1,26 @@
+# Nestory: Home Inventory
+
+> Nestory is a free iPhone app that keeps a home's records in one place: every appliance, its warranty, manual, model and serial number, maintenance reminders and repair history. It reminds homeowners before warranties expire and exports the whole home as a PDF report for insurance claims, selling a home, or handing it to a new owner.
+
+- App Store: https://apps.apple.com/app/id6826665963
+- Website: https://trynestory.com/
+- Price: free, no ads, no tracking
+- Platform: iPhone (iOS). Not available on Android yet.
+- Made by: Sebastian Gomez, independent developer
+- Contact: hello.nestory.app@gmail.com
+
+## Features
+- Home health score: one score for how well a home is documented, with the next step to take
+- Appliances: photo, category, brand, model and serial number
+- Warranties: end dates with reminders 1 week to 3 months before they expire
+- Manuals: search online, add a PDF, or scan the paper copy
+- Home systems: roof, HVAC, plumbing, electrical, water heater and more, with repair and service history
+- Maintenance reminders with phone notifications
+- PDF home report for insurance claims and home sales
+- More than one home (house, rental, vacation home)
+- Data is saved to the user's account, and the account can be deleted inside the app
+
+## Pages
+- [Home](https://trynestory.com/)
+- [Support](https://trynestory.com/support.html)
+- [Privacy policy](https://trynestory.com/privacy.html)
